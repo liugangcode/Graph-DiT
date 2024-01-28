@@ -6,8 +6,8 @@ Paper: https://arxiv.org/abs/2401.13858
 This is the code for MCD: a Multi-Conditional Diffusion Model for inverse small molecule and polymer designs and generations. The denoising model architecture in `mcd/models` looks like:
 
 <div style="display: flex;" markdown="1">
-      <img src="asset/reverse.png" style="width: 50%;" alt="Description of the first image">
-      <img src="asset/arch.png" style="width: 50%;" alt="Description of the second image">
+      <img src="asset/reverse.png" style="width: 45%;" alt="Description of the first image">
+      <img src="asset/arch.png" style="width: 45%;" alt="Description of the second image">
 </div>
 
 
