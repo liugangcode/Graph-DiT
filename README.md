@@ -14,7 +14,7 @@ This is the code for MCD: a Multi-Conditional Diffusion Model for inverse small 
 ## Requirements
 All dependencies are specified in the `requirements.txt` file.
 
-This code was developed and tested with Python 3.9.16, PyTorch 2.0.0, and PyG 2.3.0, pytorch-lightning 2.0.1.
+This code was developed and tested with Python 3.9.16, PyTorch 2.0.0, and PyG 2.3.0, Pytorch-lightning 2.0.1.
 
 For molecular generation evaluation, we should first install rdkit: 
 

@@ -1,0 +1,46 @@
+general:
+    name: 'MCD'
+    wandb: 'disabled' 
+    gpus: 1
+    resume: null
+    test_only: null
+    sample_every_val: 2500
+    samples_to_generate: 512      
+    samples_to_save: 3
+    chains_to_save: 1
+    log_every_steps: 50
+    number_chain_steps: 8
+    final_model_samples_to_generate: 10000
+    final_model_samples_to_save: 20
+    final_model_chains_to_save: 1
+    enable_progress_bar: False
+    save_model: False
+model:
+    type: 'discrete'
+    transition: 'marginal'                  
+    model: 'MCD'
+    diffusion_steps: 500
+    diffusion_noise_schedule: 'cosine'
+    guide_scale: 2
+    hidden_size: 1152
+    depth: 6
+    num_heads: 16
+    mlp_ratio: 4
+    drop_condition: 0.01
+    lambda_train: [1, 10]  # node and edge training weight 
+    ensure_connected: True
+train:
+    n_epochs: 10000
+    batch_size: 1200
+    lr: 0.0002
+    clip_grad: null
+    num_workers: 0
+    weight_decay: 0
+    seed: 0
+    val_check_interval: null
+    check_val_every_n_epoch: 1
+dataset:
+    datadir: 'data/'
+    task_name: null
+    guidance_target: null
+    pin_memory: False
