@@ -1,9 +1,9 @@
-Inverse Molecular Design with Multi-Conditional Diffusion Guidance
+Graph Diffusion Transformer for Multi-Conditional Molecular Generation
 ================================================================
 
 Paper: https://arxiv.org/abs/2401.13858
 
-This is the code for MCD: a Multi-Conditional Diffusion Model for inverse small molecule and polymer designs and generations. The denoising model architecture in `mcd/models` looks like:
+This is the code for Graph DiT. The denoising model architecture in `graph_dit/models` looks like:
 
 <div style="display: flex;" markdown="1">
       <img src="asset/reverse.png" style="width: 45%;" alt="Description of the first image">
@@ -16,7 +16,7 @@ All dependencies are specified in the `requirements.txt` file.
 
 This code was developed and tested with Python 3.9.16, PyTorch 2.0.0, and PyG 2.3.0, Pytorch-lightning 2.0.1.
 
-For molecular generation evaluation, we should first install rdkit: 
+For molecular generation evaluation, we should first install rdkit.
 
 Then `fcd_torch`: `pip install fcd_torch` (https://github.com/insilicomedicine/fcd_torch).
 

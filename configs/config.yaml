@@ -1,5 +1,5 @@
 general:
-    name: 'MCD'
+    name: 'graph_dit'
     wandb: 'disabled' 
     gpus: 1
     resume: null
@@ -14,11 +14,11 @@ general:
     final_model_samples_to_save: 20
     final_model_chains_to_save: 1
     enable_progress_bar: False
-    save_model: False
+    save_model: True
 model:
     type: 'discrete'
     transition: 'marginal'                  
-    model: 'MCD'
+    model: 'graph_dit'
     diffusion_steps: 500
     diffusion_noise_schedule: 'cosine'
     guide_scale: 2

@@ -9,7 +9,7 @@ from pytorch_lightning import Trainer
 
 import utils
 from datasets import dataset
-from diffusion_model import MCD
+from diffusion_model import Graph_DiT
 from metrics.molecular_metrics_train import TrainMolecularMetricsDiscrete
 from metrics.molecular_metrics_sampling import SamplingMolecularMetrics
 
@@ -36,7 +36,7 @@ def get_resume(cfg, model_kwargs):
     name = cfg.general.name + "_resume"
     resume = cfg.general.test_only
     batch_size = cfg.train.batch_size
-    model = MCD.load_from_checkpoint(resume, **model_kwargs)
+    model = Graph_DiT.load_from_checkpoint(resume, **model_kwargs)
     cfg = model.cfg
     cfg.general.test_only = resume
     cfg.general.name = name
@@ -54,7 +54,7 @@ def get_resume_adaptive(cfg, model_kwargs):
     resume_path = os.path.join(root_dir, cfg.general.resume)
 
     if cfg.model.type == "discrete":
-        model = MCD.load_from_checkpoint(
+        model = Graph_DiT.load_from_checkpoint(
             resume_path, **model_kwargs
         )
     else:
@@ -73,7 +73,7 @@ def get_resume_adaptive(cfg, model_kwargs):
 
 
 @hydra.main(
-    version_base="1.1", config_path="../configs", config_name="config_dev"
+    version_base="1.1", config_path="../configs", config_name="config"
 )
 def main(cfg: DictConfig):
 
@@ -106,7 +106,7 @@ def main(cfg: DictConfig):
         cfg, _ = get_resume_adaptive(cfg, model_kwargs)
         os.chdir(cfg.general.resume.split("checkpoints")[0])
 
-    model = MCD(cfg=cfg, **model_kwargs)
+    model = Graph_DiT(cfg=cfg, **model_kwargs)
     trainer = Trainer(
         gradient_clip_val=cfg.train.clip_grad,
         accelerator="gpu"

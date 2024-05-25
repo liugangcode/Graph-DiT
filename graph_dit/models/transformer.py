@@ -44,7 +44,7 @@ class Denoiser(nn.Module):
             ]
         )
 
-        self.decoder = Decoder(
+        self.out_layer = OutLayer(
             max_n_nodes=max_n_nodes,
             hidden_size=hidden_size,
             atom_type=Xdim,
@@ -73,7 +73,7 @@ class Denoiser(nn.Module):
 
         for block in self.encoders :
             _constant_init(block.adaLN_modulation[0], 0)
-        _constant_init(self.decoder.adaLN_modulation[0], 0)
+        _constant_init(self.out_layer.adaLN_modulation[0], 0)
 
     def forward(self, x, e, node_mask, y, t, unconditioned):
         
@@ -99,7 +99,7 @@ class Denoiser(nn.Module):
             x = block(x, c, node_mask)
 
         # X: B * N * dx, E: B * N * N * de
-        X, E, y = self.decoder(x, x_in, e_in, c, t, node_mask)
+        X, E, y = self.out_layer(x, x_in, e_in, c, t, node_mask)
         return utils.PlaceHolder(X=X, E=E, y=y).mask(node_mask)
 
 
@@ -140,8 +140,8 @@ class SELayer(nn.Module):
         return x
 
 
-class Decoder(nn.Module):
-    # Structure Decoder
+class OutLayer(nn.Module):
+    # Structure Output Layer
     def __init__(self, max_n_nodes, hidden_size, atom_type, bond_type, mlp_ratio, num_heads=None):
         super().__init__()
         self.atom_type = atom_type

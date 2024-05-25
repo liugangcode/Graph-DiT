@@ -12,7 +12,7 @@ from metrics.train_loss import TrainLossDiscrete
 from metrics.abstract_metrics import SumExceptBatchMetric, SumExceptBatchKL, NLL
 import utils
 
-class MCD(pl.LightningModule):
+class Graph_DiT(pl.LightningModule):
     def __init__(self, cfg, dataset_infos, train_metrics, sampling_metrics, visualization_tools):
         super().__init__()
         self.save_hyperparameters(ignore=['train_metrics', 'sampling_metrics'])
@@ -174,7 +174,6 @@ class MCD(pl.LightningModule):
     def validation_step(self, data, i):
         data_x = F.one_hot(data.x, num_classes=118).float()[:, self.active_index]
         data_edge_attr = F.one_hot(data.edge_attr, num_classes=5).float()
-
         dense_data, node_mask = utils.to_dense(data_x, data.edge_index, data_edge_attr, data.batch, self.max_n_nodes)
         dense_data = dense_data.mask(node_mask)
         noisy_data = self.apply_noise(dense_data.X, dense_data.E, data.y, node_mask)
@@ -281,7 +280,6 @@ class MCD(pl.LightningModule):
         chains_left_to_save = self.cfg.general.final_model_chains_to_save
 
         samples, all_ys, batch_id = [], [], 0
-
         test_y_collection = torch.cat(self.test_y_collection, dim=0)
         num_examples = test_y_collection.size(0)
         if self.cfg.general.final_model_samples_to_generate > num_examples:
