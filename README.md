@@ -1,7 +1,7 @@
 Graph Diffusion Transformer for Multi-Conditional Molecular Generation
 ================================================================
 
-Paper: https://arxiv.org/abs/2401.13858
+Paper: https://arxiv.org/abs/2401.13858 (NeurIPS 2024 Oral)
 
 This is the code for Graph DiT. The denoising model architecture in `graph_dit/models` looks like:
 
@@ -74,13 +74,11 @@ Feel free to test the code on your own dataset!
 If you find this repository useful, please cite our paper:
 
 ```
-@misc{liu2024inverse,
-      title={Inverse Molecular Design with Multi-Conditional Diffusion Guidance}, 
-      author={Gang Liu and Jiaxin Xu and Tengfei Luo and Meng Jiang},
-      year={2024},
-      eprint={2401.13858},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{liu2024graphdit,
+  title={Graph Diffusion Transformers for Multi-Conditional Molecular Generation},
+  author={Liu, Gang and Xu, Jiaxin and Luo, Tengfei and Jiang, Meng},
+  booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+  year={2024}
 }
 ```
 
