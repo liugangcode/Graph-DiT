@@ -10,6 +10,8 @@ This is the code for Graph DiT. The denoising model architecture in `graph_dit/m
       <img src="asset/arch.png" style="width: 45%;" alt="Description of the second image">
 </div>
 
+## Update
+May 29: The Graph DiT models have been incorporated into `torch-molecule` (https://github.com/liugangcode/torch-molecule), which is the open-source project we are actively building to provide sklearn-style interfaces for various molecular generation, prediction, and representation models. The package supports implementations of DiGress and GDSS as well, along with other molecular generation methods.
 
 ## Requirements
 All dependencies are specified in the `requirements.txt` file.
