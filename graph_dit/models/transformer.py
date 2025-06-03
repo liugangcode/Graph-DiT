@@ -90,9 +90,9 @@ class Denoiser(nn.Module):
         c1 = self.t_embedder(t)
         for i in range(1, self.ydim):
             if i == 1:
-                c2 = self.y_embedding_list[i-1](y[:, :2], self.training, force_drop_id, t)
+                c2 = self.y_embedding_list[i-1](y[:, :2], self.training, force_drop_id)
             else:
-                c2 = c2 + self.y_embedding_list[i-1](y[:, i:i+1], self.training, force_drop_id, t)
+                c2 = c2 + self.y_embedding_list[i-1](y[:, i:i+1], self.training, force_drop_id)
         c = c1 + c2
         
         for i, block in enumerate(self.encoders):
